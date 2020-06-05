@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Style Practice (CSS)</title>
+        <style>
+            
+            @keyframes background-ani {
+                from {background-color: salmon;}
+                to {background-color: lightPink;}
+                
+            }
+            
+            /*animation syntax: animation: highlight 1s linear 0s infinite alternate; need to use*/
+            
+            body, html {
+                height: 100%;
+                margin: 0;
+                font-family: cursive, sans-serif;
+                
+                
+            }
+
+            #img-div {
+                background-image:url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Zosterops_palpebrosus_2.jpg/220px-Zosterops_palpebrosus_2.jpg");
+                background-size: 543px;
+                filter: blur(7.5px);
+                height: 1000%;
+                overflow-x: hidden; 
+                overflow-y: fixed;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+                
+            }
+            
+            .text {
+                background-color: rgba(250, 128, 114, 0.60);
+                color: rgb(225, 225, 200);
+                padding-left:10px;
+                padding-right:10px;
+                border:5px black double;
+            }
+            
+            .boxes {
+                position: absolute;
+                text-align:center;
+                margin-left:50px;
+                margin-right:50px;
+            }
+            
+            .note {
+                font-size:10px;
+                border-left:2.5px solid rgb(225, 225, 200);
+                padding-left:5px;
+            }
+            
+            .big-pre{
+                font-size:12px;
+            }
+            
+            #CSS-and-HTML {
+                top: 165px;
+            }
+            
+            #intro {
+                top: 0px;
+                left: 0px;
+                font-size:12.5px;
+                position: fixed;
+                margin:10px;
+                
+            }
+            
+            #using-CSS {
+                top: 685px;
+            }
+            
+            #CSS-syntax {
+                top:2335px;
+            }
+            
+        
+            
+            p {
+                text-align: left;
+            }
+            
+            pre {
+                background-color: rgba(250, 128, 114, 0.75);
+                padding: 20px;
+                border: 0.5px solid rgb(225, 225, 200);
+                margin-left:25px;
+                margin-right:25px;
+            }
+            
+            li {
+                text-align: left;
+            }
+            
+            ::selection {
+                background-color: rgba(255, 182, 193, 1);
+            }
+            
+            p:not(.note)::first-letter {
+                /*to do*/
+                
+            }
+            
+            
+        </style>
+        
+    </head>
+    <body>
+        <div id="img-div"></div>
+        <div class="text" id="intro">
+            <h1>CSS</h1>
+            <h2>Cascding Style Sheets</h2>
+        </div>
+        <div class="boxes text" id="CSS-and-HTML">
+            <h1>What's CSS?</h1>
+            <p class="non-center">CSS is a programing language used to make HTML (HyperText Markup Language) less plain and nicer looking. <em>This may sound unimportant, but you can do amazing things with CSS.</em></p>
+            <h1>Ok, what's HTML?</h1>
+            <p>HTML is a programming language that is used to code webpages with <strong>tags.</strong> Right now when I'm typing this paragraph <em>in my own webpage,</em> I'm typing it between an opening and closing tag that look like this:</p>
+
+<pre>
+&lt;p&gt;HTML is a programming...&lt;/p&gt;
+</pre>
+                
+            </div>
+            <div class="boxes text" id="using-CSS">
+                <h1>How do I use CSS?</h1>
+                <p>To use CSS you need to have a <strong>selector.</strong> A selector is something you use to identify one or more HTML tags. There are many selectors and as many ways to use them, so I'll only explain a few. I will explain basic methods of using <strong>tag names, ids,</strong> and <strong>classes</strong></p>
+                <h1>Style Tags</h1>
+                <p>You need a style tag just as much as you need a selector. A style tag lets you use CSS by telling the computer you switched the programming languages. <strong>The computer would give you syntax errors while you were using <em>valid CSS</em></strong> A style tag is exactly the same as a paragraph tag, except for the "p" is replaced with "style". This is a style tag:</p>
+                    
+<pre>
+&lt;style&gt;(CSS)&lt;/style&gt;
+</pre>                    
+                <p class="note">note: (CSS) would be replaced with actual CSS code.</p>
+                
+                <h1>Tag Names as Selectors</h1>
+                <p>This is by far the easiest selector to use. Simply type the tag name of your choice inside the style tag and put a pair of brackets after it, like this:</p>
+                    
+<pre>
+&lt;style&gt;h1 {}&lt;/style&gt;
+</pre>
+                <p class="note">*note: h1 is a tag used for headlines. It is basically a paragraph tag with larger text.</p>
+                <p>The main disadvantage to this method is that it selects all tags of the type you select and just that type. It isn't very fexible.</p>    
+                <h1>Ids</h1>
+                <p>An id is th best tool you have if you only want to select one element. To use an id as a selector:</p>
+                <ol>
+                    <li>Put an id atribute* in the opening element of your tag</li>
+                    <li>Type "#id-name {}" in your style tag</li>
+                </ol>
+                <p class="note">*note: An atribute is used to specify something about a tag that isn't specified in the tag name.</p>
+                <p class="note">*note: Id-name refers to the name of your id. You may use anything as the name of your id as long as it has no spaces. This also applies to class names.</p>
+            
+<pre>
+&lt;style&gt;#my-id {}&lt;/style&gt;...
+&lt;p id="my-id"&gt;Whatever I want to type&lt;/p&gt;
+</pre>                
+                <h1>Classes</h1>    
+                <p>If you use tag names as selectors, you use all tags with the name you selected, and no other tags. If you use a id as selector, you can only select one tag. <strong>Classes</strong> are the best of both worlds. Classes are like ids but you can give multible tags the same class and you replace the hashtag (#) with a period. An exmple:</p>
+                
+<pre>
+&lt;style&gt;.my-class {}&lt;/style&gt;...
+&lt;p class="my-class"&gtA paragraph&lt;/p&gt;
+&lt;h1 class="my-class"&gt;A headline&lt;/h1&gt;
+</pre>                  
+            </div>
+        
+            <div class="boxes text" id="CSS-syntax">
+                <h1>CSS Syntax</h1>
+                <p>But how do you actually do stuff with CSS? Well, you use properties! Properties are what actually specify how the element looks. For example, to specify the color of the background of this text, I use this property:</p>
+
+<pre class="big-pre">
+background-color: rgba(250, 128, 114, 0.60);
+</pre>                   
+                <p>You might not understand properties now, but keep reading for more information.</p>
+                <h1>The syntax of properties</h1>
+                <p>Look up, above the headline above the paragraph. You saw it, right? Up there is a small segment of code that looks like it would tell the computer to make the background of some element a rgba color. Seems like it would work the same if you typed one of these:</p>
+<pre class="big-pre">
+background-color: rgba(250, 128, 114, 0.60)
+background-color rgba(250, 128, 114, 0.60);
+background-color: rgba(250 128 114 0.60);
+</pre>
+                <p>Nope! Not at all. When you're typing a property, you need to follow the rules of CSS syntax. CSS syntax looks like:</p>
+<pre class="big-pre">
+property-name: property-values(perameters);
+</pre>            
+                <p class="note">*note: I am not sure what the technical term for "perameters" is.</p>
+                <p class="note">*note: I am not sure what the technical term for "property-values" is.</p>
+                <p>Now, let's dissect the syntax of the property above.</p>
+                <ol>
+                    <li>property-name:<br>This refers to the name of the property. For example: "border-style" or "text-align". After the property name is a semicolon (;)</li>
+                    <li>property-values:<br>This represents the value(s)* of the property. Since so far it might have been a little confusing, i'll give you a metaphor for CSS syntax. The metaphor is that the property name is a question and the value is the answer. For example: "What size should the margin be? it should be 10 pixels."
+                        
+                    </li>
+                <li>perameters:<br>As you can see, the perameters are in parentheses(you know what parentheses are, right?). The other puncuation mark for perameters is the comma (,), which seperates perameters if there are more than 1 of them. Before we get into detail, it is important to note that: 
+                    <ul>
+                        <li>There can be nesting perameters (perameters inside perameters)</li>
+                        <li>If there are multiple property values, there can be multiple sets of perameters.</li>
+                    </ul></li>    
+                </ol>
+                <p>Perameters are generally used to specify more about a property value. To continue with our question example, it would sound a little like this: "What color should the background be? An RGB color. What is the number for the red? 255. What is the number for the green? 10. What is the number for the blue? 10."</p>
+            </div>
+            
+        
+        
+    </body>
+    <!--background image height:543-->
+    
+</html>
+
+
