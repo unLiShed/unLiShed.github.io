@@ -1,13 +1,16 @@
 var translatableElements = [];
 var translations = [];
 var clickers = [];
-            
+                    
 var addSet = function(translatableElementId, translation, clickerId) {
-            translatableElements.push(translatableElementId);
+            elem = document.getElementById(translatableElementId);
+            clicker = document.getElementById(clickerId);
+                    
+            translatableElements.push(elem);
             translations.push(translation);
-            clickers.push(clickerId);
+            clickers.push(clicker);
 };
-            
+                    
 var eventListenerNum = 0;
 
 var getTranslator = function(link, translation) {
@@ -16,16 +19,18 @@ var getTranslator = function(link, translation) {
             }
 };
 var addTranslators = function() {
-            while(eventListenerNum < links.length) {
+            while(eventListenerNum < translatableElements.length) {
                         var curClicker = clickers[eventListenerNum];
-                        var curLink = links[eventListenerNum];
+                        var curElem = translatableElements[eventListenerNum];
                         var curTranslation = translations[eventListenerNum];
-                        var curTranslator = getTranslator(curLink, curTranslation);
+                        var curTranslator = getTranslator(curElem, curTranslation);
                         curClicker.addEventListener("click", curTranslator);
                         eventListenerNum++;
             }
 };
-            
-if(links.length !== translations.length or links.length !== clickers.lengthor translations.length !== clickers.length) {
+                    
+if(translatableElements.length !== translations.length 
+            || translatableElements.length !== clickers.length 
+            || translations.length !== clickers.length) {
             document.body.textContent = "Oh noes! Your arrays (links, translations, and clickers) have different lengths!"
 }
