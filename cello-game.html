@@ -41,7 +41,10 @@ https://github.com/Team-Code/KA_Offline -->
 
 	    frameRate(100);
 
-	    var isMousePressed = function() { return mousePressed; };
+	    var clicked = false;
+	    mousePressed = function() {
+			clicked = true;
+	    };
 	     
 	    var info = {
 		isWIP: true, 
@@ -124,9 +127,13 @@ https://github.com/Team-Code/KA_Offline -->
 		text("click here \nto continue", 200, 55);//This text tells the user to click
 
 
-		    if(sceneNum === 0 && mouseX > 145 && mouseX < 255 && mouseY > 20 && mouseY < 90 && isMousePressed()) {
+		if (clicked) {
+			console.log("clicked!");
+		}
+
+		if (sceneNum === 0 && mouseX > 145 && mouseX < 255 && mouseY > 20 && mouseY < 90 && clicked) {
 			sceneNum = 1;
-		    }   
+		}   
 
 	    };
 
