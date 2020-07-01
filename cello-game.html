@@ -122,7 +122,7 @@ https://github.com/Team-Code/KA_Offline -->
 		text("click here \nto continue", 200, 55);//This text tells the user to click
 
 
-		    if(sceneNum === 0 && mouseX > 145 && mouseX < 255 && mouseY > 20 && mouseY < 90 && mouseIsPressed) {
+		    if(sceneNum === 0 && mouseX > 145 && mouseX < 255 && mouseY > 20 && mouseY < 90 && mousePressed) {
 			sceneNum = 1;
 		    }   
 
@@ -152,16 +152,16 @@ https://github.com/Team-Code/KA_Offline -->
 		drawCelloIcon(325, 100, color(247.5, 245, 242.5));
 
 
-		if (mouseX > 150 && mouseX < 210 && mouseY > 190 && mouseY < 250 && mouseIsPressed && sceneNum === 1) {
+		if (mouseX > 150 && mouseX < 210 && mouseY > 190 && mouseY < 250 && mousePressed && sceneNum === 1) {
 		    requestScene = true;
 		    sceneNum = 2;
 
 		}//An if statement with conditions that find out if the play (top) button is being pressed
-		if (mouseX > 150 && mouseX < 210 && mouseY > 290 && mouseY < 350 && mouseIsPressed && sceneNum === 1) {
+		if (mouseX > 150 && mouseX < 210 && mouseY > 290 && mouseY < 350 && mousePressed && sceneNum === 1) {
 		    requestScene = true;
 		    sceneNum = 3;
 		}//An if statement with conditions that find out if the tutorial (bottom) button is being pressed
-		if (mouseX > 275 && mouseX < 350 && mouseY > 230 && mouseY < 280 && mouseIsPressed && sceneNum === 1) {
+		if (mouseX > 275 && mouseX < 350 && mouseY > 230 && mouseY < 280 && mousePressed && sceneNum === 1) {
 		    println("info, coming soon");
 		    requestScene = true;
 		    sceneNum = 4;
@@ -186,30 +186,30 @@ https://github.com/Team-Code/KA_Offline -->
 		rect(205, 125, 15, 150);
 		rect(315, 125, 15, 150);
 
-		if(mouseX > 75 && mouseX < 90 && mouseY > 125 && mouseY < 275 && mouseIsPressed) {
+		if(mouseX > 75 && mouseX < 90 && mouseY > 125 && mouseY < 275 && mousePressed) {
 		    curFingers = 1;
-		} else if(mouseX > 205 && mouseX < 220 && mouseY > 125 && mouseY < 275 && mouseIsPressed) {
+		} else if(mouseX > 205 && mouseX < 220 && mouseY > 125 && mouseY < 275 && mousePressed) {
 		    curFingers = 2;
-		} else if(mouseX > 315 && mouseX < 330 && mouseY > 125 && mouseY < 275 && mouseIsPressed) {
+		} else if(mouseX > 315 && mouseX < 330 && mouseY > 125 && mouseY < 275 && mousePressed) {
 		    curFingers = 4;
 		}
 
-		if(mouseY > 150 && mouseY < 160 && mouseIsPressed) {
+		if(mouseY > 150 && mouseY < 160 && mousePressed) {
 		    curString = "a";
 
 
 		} 
-		if(mouseY > 180 && mouseY < 290 && mouseIsPressed) {
+		if(mouseY > 180 && mouseY < 290 && mousePressed) {
 		    curString = "d";
 
 
 		} 
-		if(mouseY > 210 && mouseY < 220 && mouseIsPressed) {
+		if(mouseY > 210 && mouseY < 220 && mousePressed) {
 		    curString = "g";
 
 
 		} 
-		if(mouseY > 240 && mouseY < 250 && mouseIsPressed) {
+		if(mouseY > 240 && mouseY < 250 && mousePressed) {
 		    curString = "c";
 
 
