@@ -24,21 +24,290 @@ https://github.com/Team-Code/KA_Offline -->
         frameRate(30);
         
         // ProgramCodeGoesHere
-        fill(255, 255, 0);
-        ellipse(200, 200, 200, 200);
-        noFill();
-        stroke(0, 0, 0);
-        strokeWeight(2);
-        arc(200, 200, 150, 100, 0, PI);
-        fill(0, 0, 0);
-        ellipse(250, 200, 10, 10);
-        ellipse(153, 200, 10, 10);
-    }};
+        /*  CONTEST: MUSIC
 
-    // Get the canvas that Processing-js will use
-    var canvas = document.getElementById("mycanvas"); 
-    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
-    var processingInstance = new Processing(canvas, sketchProc); 
+	    I've been programming 2 months, 
+	    and I have learned approx. 90% of Intro to JS (because I haven't completed many of the challenges cause' I'm lazy ;-;).
+
+	    I would prefer to be placed in the 
+	    (Beginner) bracket.
+
+	    TODO: Fill that out ^ : check
+	    TODO: Remove promo code below. : check
+	    TODO: Save as Spin-off : check
+	    TODO: Create contest entry : 
+	*/
+	//{
+
+	    frameRate(100);
+
+	    var info = {
+		isWIP: true, 
+		thingsIK: ["this is not actaully entered because of child account, I'm pretending it is"],
+		reason: "I am a (beginner) cello student who likes to code", 
+		author: "daughterthumb",
+		notes: ["the octaves go from c to b", "the 0 octave is the one open d is in", "on the c and g strings, the two-finger position would produce a flat note"],
+		comingSoon: ["better looks for tutorial scene", "visual indicators showing what's slelcted for the play scene", "info scene"],
+		funFacts: ["the blue tape is the pantone color of the year for 2020"]
+
+	    };//This is info about my entry.
+
+
+	    var Note = function(name, stringName, fingers, octaveNum) {
+		    this.name = name;
+		    this.stringName = stringName;
+		    this.fingers = fingers;
+		    this.octaveNum = octaveNum;
+
+	    };
+	    var musicNotes = [new Note("d", "c", 1, -1), new Note("e", "c", 2, -1), new Note("f", "c", 4, -1), new Note("a", "g", 1, -1), new Note("b", "g", 2, -1), new Note("c", "g", 4, 0), new Note("e", "d", 1, 0), new Note("f", "d", 2, 0), new Note("g", "d", 4, 0), new Note("b", "a", 1, 0)];//to add when there's a let go button: new Note("c", "c", 0, -1), new Note("g", "g", 0, -1), new Note("d", "d", 0, 0), new Note("a", "a", 0, 0)
+	    var curNote;
+	    var needNewNote = true;
+	    var curFingers = 0;
+	    var curString;
+	    var pts = 0;
+
+	    var sceneNum = 0;//This makes it so the first scene atomatically appears by making a variable sceneNum that = 0
+	    var requestScene = false;
+
+	    var cursive = createFont("cursive");//If zapfino is't supported by the browser. I hope the imiganary judges like this! Its litterally back up!
+	    textFont(cursive);
+	    var zap = createFont("Zapfino");//This gets a pretty font.
+	    textFont(zap);//This uses the font.
+
+	    var celloColor = color(140, 65, 15);
+	    var backgroundColor = color(247.5, 245, 242.5);
+
+	    noStroke();
+	    textAlign(CENTER, CENTER);
+
+	    var drawCelloIcon = function(celloIconX, celloIconY, bgColor) {
+		noStroke();//This makes the stroke dissapear.
+		fill(140, 65, 15);//This makes the icon brown.
+
+		ellipse(celloIconX, celloIconY + 10, 50, 50);//The top half of the icon
+		ellipse(celloIconX, celloIconY - 10, 50, 50);//The bottom half of the icon
+
+		fill(bgColor);//Fills the holes with the specified color (which should be the same as the background color).
+		ellipse(celloIconX + 20, celloIconY, 15, 15);//The hole to the right
+		ellipse(celloIconX - 20, celloIconY, 15, 15);//The hole to the left
+
+		stroke(0, 0, 0);//This makes the fingerboard black.
+		strokeWeight(15);//This makes the fingerboard thick enough
+		strokeCap(SQUARE);//this makes the fingerboard be like a rectangle
+		line(celloIconX, celloIconY, celloIconX, celloIconY - 60);//this draws the fingerboard 
+
+		noStroke();//This makes the stroke dissapear
+		fill(140, 65, 15);//This makes the scroll brown.
+		ellipse(celloIconX, celloIconY - 55, 25, 25);//This draws the scroll
+	    };//This function draws the cello icon
+
+	    var drawOpeningScene = function() {
+		background(247.5, 245, 242.5);//This makes a pleasant off-white background.
+		fill(140, 65, 15);//this makes the title the same color as a  cello
+		textSize(41);//This makes the text big, so people pay attention to it. Its supposed to be 40, but if I leave it at 1 value over night, it makes the text too small next time I code
+		textAlign(CENTER, CENTER);//This makes it so the text is aligned to the center. It makes it easier to center my text and I need to do that often.
+
+
+		text("Cello Game", 198.75, 300);//This draws the title.
+		text("Cello Game", 201.25, 300);//This makes the title look cool.
+
+
+		drawCelloIcon(200, 200, color(247.5, 245, 242.5));//This calls the drawCelloIcon function and actually makes the cello icon appear
+
+		rect(145, 20, 110, 70, 2);
+
+		fill(247.5, 245, 242.5);
+		textSize(12);
+		text("click here \nto continue", 200, 55);//This text tells the user to click
+
+
+		    if(sceneNum === 0 && mouseX > 145 && mouseX < 255 && mouseY > 20 && mouseY < 90 && mouseIsPressed) {
+			sceneNum = 1;
+		    }   
+
+	    };
+
+	    var drawMenu = function() {
+		background(247.5, 245, 242.5);
+		fill(140, 65, 15);
+		textSize(40);
+		textAlign(CENTER, CENTER);
+		text("Menu", 198.75, 100);//This draws the title.
+		text("Menu", 201.25, 100);//This makes the title look cool.
+
+		noStroke();
+		rect(150, 190, 100, 60, 2);//Play button
+		rect(150, 290, 100, 60, 2);//tutorial button
+		rect(275, 230, 75, 50, 2);//distraction button
+		rect(50, 230, 75, 50, 2);//info button
+
+
+		fill(247.5, 245, 242.5);
+		textSize(10);
+		text("Play", 199, 220);
+		text("Tutorial",196,320); 
+
+		drawCelloIcon(75, 100, color(247.5, 245, 242.5));
+		drawCelloIcon(325, 100, color(247.5, 245, 242.5));
+
+
+		if (mouseX > 150 && mouseX < 210 && mouseY > 190 && mouseY < 250 && mouseIsPressed && sceneNum === 1) {
+		    requestScene = true;
+		    sceneNum = 2;
+
+		}//An if statement with conditions that find out if the play (top) button is being pressed
+		if (mouseX > 150 && mouseX < 210 && mouseY > 290 && mouseY < 350 && mouseIsPressed && sceneNum === 1) {
+		    requestScene = true;
+		    sceneNum = 3;
+		}//An if statement with conditions that find out if the tutorial (bottom) button is being pressed
+		if (mouseX > 275 && mouseX < 350 && mouseY > 230 && mouseY < 280 && mouseIsPressed && sceneNum === 1) {
+		    println("info, coming soon");
+		    requestScene = true;
+		    sceneNum = 4;
+		}//An if statement with conditions that find out if the info (right) button is being pressed
+
+	    };
+
+	    var drawPlayScene = function() {
+
+		var noteNum = 1;
+		var fingerNum = 0;
+
+		noStroke();
+
+		background(247.5, 245, 242.5);
+
+		fill(37.5, 35, 25);
+		rect(0, 125, 400, 150, 0);
+
+		fill(29, 78, 137);
+		rect(75, 125, 15, 150);
+		rect(205, 125, 15, 150);
+		rect(315, 125, 15, 150);
+
+		if(mouseX > 75 && mouseX < 90 && mouseY > 125 && mouseY < 275 && mouseIsPressed) {
+		    curFingers = 1;
+		} else if(mouseX > 205 && mouseX < 220 && mouseY > 125 && mouseY < 275 && mouseIsPressed) {
+		    curFingers = 2;
+		} else if(mouseX > 315 && mouseX < 330 && mouseY > 125 && mouseY < 275 && mouseIsPressed) {
+		    curFingers = 4;
+		}
+
+		if(mouseY > 150 && mouseY < 160 && mouseIsPressed) {
+		    curString = "a";
+
+
+		} 
+		if(mouseY > 180 && mouseY < 290 && mouseIsPressed) {
+		    curString = "d";
+
+
+		} 
+		if(mouseY > 210 && mouseY < 220 && mouseIsPressed) {
+		    curString = "g";
+
+
+		} 
+		if(mouseY > 240 && mouseY < 250 && mouseIsPressed) {
+		    curString = "c";
+
+
+		}
+
+
+
+
+
+		stroke(backgroundColor);
+		strokeWeight(1);
+		line(0, 155, 400, 155);
+		strokeWeight(2);
+		line(0, 185, 400, 185);
+		strokeWeight(3);
+		line(0, 215, 400, 215);
+		strokeWeight(4);
+		line(0, 245, 400, 245);
+
+		fill(backgroundColor);
+		textSize(12.5);
+		text("a", 30, 147.5);
+		text("d", 30, 177.5);
+		text("g", 30, 207.5);
+		text("c", 30, 237.5);
+
+		if (needNewNote) {
+		    curNote = musicNotes[floor(random(0, musicNotes.length))];
+		    needNewNote = false;
+		}
+
+		var noteNameString;
+		if (curNote.octaveNum === -1) {
+		    noteNameString = "low ";
+		} else {
+		    noteNameString = "";
+		}
+
+		noteNameString += curNote.name;
+
+		fill(celloColor);
+		textSize(40);
+		text(noteNameString, 200, 70);
+
+		if (curString === curNote.stringName && curFingers === curNote.fingers) {
+		    pts++;
+		    needNewNote = true;
+		}
+
+		fill(celloColor);
+		textSize(15);
+		text("points: " + pts, 200, 315);
+	    };
+
+	    var drawTutorialScene = function() {
+		var textY = 15;
+		background(backgroundColor);
+
+		textSize(10);
+		textAlign(LEFT, TOP);
+		text("go to 'play'. there you will see a grid with blue and white lines.\nYou will also see a letter on top. The letter is the note you\nneed to select. The strings have letters next to them. Those are\n the names of the strings. The blue lines are fingering marks.\nBasically the note next to the string is the base note. If you\nselect the first fingering mark (closest to the left), then you\nget the note after the base note. If you select the fingering\nmark after that the output is two letters after the base note\nand so on. The letter resets after g, so the note after g is a.\nIf you see 'low' before the note name, that means it is the lower\nnote of the two possibilities. The 'low' notes go from open c,\non the c string to b, to fingers on the g string", 25, textY);
+	    textAlign(CENTER, CENTER);
+	    textY++;
+
+
+
+	    };
+
+
+	    draw = function() {
+
+		if(requestScene) {}
+
+		if (sceneNum === 0) {
+		    drawOpeningScene();
+		}//This displays the first scene, only if the variable sceneNum is 0
+		else if (sceneNum === 1) {
+		    drawMenu();
+		}//This displays the menu only if sceneNum is 1
+
+		else if (sceneNum === 2) {
+		    drawPlayScene();
+		}
+
+		else if (sceneNum === 3) {
+		    drawTutorialScene();
+		}
+
+		else {
+		    background(255, 255, 255);
+		}//TEMPORARY
+	    };  
+	    }};
+
+	    // Get the canvas that Processing-js will use
+	    var canvas = document.getElementById("mycanvas"); 
+	    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+	    var processingInstance = new Processing(canvas, sketchProc); 
  </script>
 
 </html>
