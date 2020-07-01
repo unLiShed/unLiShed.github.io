@@ -41,9 +41,12 @@ https://github.com/Team-Code/KA_Offline -->
 
 	    frameRate(100);
 
-	    var clicked = false;
+	    var mouseIsPressed = false;
 	    mousePressed = function() {
-			clicked = true;
+	    	mouseIsPressed = true;
+	    };
+	    mouseReleased = function() {
+		mouseIsPressed = false;
 	    };
 	     
 	    var info = {
