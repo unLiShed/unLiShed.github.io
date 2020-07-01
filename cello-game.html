@@ -41,6 +41,8 @@ https://github.com/Team-Code/KA_Offline -->
 
 	    frameRate(100);
 
+	    var isMousePressed() = { return mousePressed; };
+	     
 	    var info = {
 		isWIP: true, 
 		thingsIK: ["this is not actaully entered because of child account, I'm pretending it is"],
@@ -122,7 +124,7 @@ https://github.com/Team-Code/KA_Offline -->
 		text("click here \nto continue", 200, 55);//This text tells the user to click
 
 
-		    if(sceneNum === 0 && mouseX > 145 && mouseX < 255 && mouseY > 20 && mouseY < 90 && mousePressed) {
+		    if(sceneNum === 0 && mouseX > 145 && mouseX < 255 && mouseY > 20 && mouseY < 90 && isMousePressed()) {
 			sceneNum = 1;
 		    }   
 
