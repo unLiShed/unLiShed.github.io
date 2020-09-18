@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Jill</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                color: sienna;
+                
+            }
+            
+            
+            h1, h2, h3 {
+                text-align: center;
+                background-color: orange;
+                color: sienna;
+                margin-left: 2em;
+                margin-right: 2em;
+                border: 4px solid;
+            }
+            
+            .italics {
+                font-style: italic;
+            }
+            
+            .opens .opener {
+                background-color: orange;
+                border: 4px dashed;
+                font-size: 20px;
+                text-align: center;
+            }
+            
+            .opens .opening-section {
+                display: none;
+                
+            }
+            .opens:hover .opening-section {
+                display: block;
+                
+            }
+            
+            ::selection {
+                background-color: black;
+                
+            }
+            
+        </style>
+        
+    </head>
+    <body>
+        <h1>Jill Skowronek</h1>
+        <div class="opens">
+            <h4 class="opener">Work in Fort River Elementary</h4>
+            
+            <p class="opening-section">
+                I work in Fort River Elementary School. This will be my fourth year working here. I work in the AIMS program. I love the kids that I work with (especially LS). 
+            </p>
+        </div>
+        <div class="opens">
+            <h4 class="opener">Jill's Hobbies</h4>
+            
+            <ol class="opening-section">
+                <li>Hiking</li>
+                <li>Watching <span class="italics">The Bachelor</span></li>
+                <li>Playing With My Dog</li>
+                <li>Playing With My Nephew</li>
+            </ol>
+        </div>
+        <div class="opens">
+            <h4 class="opener">Favorite Food</h4>
+            
+            <p class="opening-section">
+                My favorite food is pizza ;)
+            </p>
+        </div>
+        <script></script>
+    </body>
+</html>
